@@ -1,23 +1,26 @@
-// MOve a user defined Character at thr end of string
+// Move a user defined Character at the end of string
 
 public class Move {
-    public static String moveCharToEnd(String str, char ch) {
-        if (str.isEmpty()) {
-            return "";
+    public static void moveCharToEnd(String str, int indx, String newString, int count) {
+        if (indx == str.length()) {
+            // Append all 'x' at the end
+            for (int i = 0; i < count; i++) {
+                newString += 'x';
+            }
+            System.out.println(newString);
+            return;
         }
-        char first = str.charAt(0);
-        String rest = str.substring(1);
-        if (first == ch) {
-            return moveCharToEnd(rest, ch) + first;
+        char current = str.charAt(indx);
+        if (current == 'x') {
+            count++;
         } else {
-            return first + moveCharToEnd(rest, ch);
+            newString += current;
         }
+        moveCharToEnd(str, indx + 1, newString, count);
     }
 
     public static void main(String[] args) {
-        String str = "abacadaeaf";
-        char ch = 'a';
-        String result = moveCharToEnd(str, ch);
-        System.out.println(result);
+        String str = "axbcxxd";
+        moveCharToEnd(str, 0, "", 0);
     }
 }
