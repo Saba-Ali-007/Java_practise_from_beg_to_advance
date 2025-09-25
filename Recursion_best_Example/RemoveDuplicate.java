@@ -7,7 +7,7 @@ public class RemoveDuplicate {
             System.out.println(newString);
             return;
         }
-        char CurrentChar = str.charAt(indx); // Use char, not int
+        char CurrentChar = str.charAt(indx); 
         if (arr[CurrentChar - 'a']) {
             remove(str, indx + 1, newString);
         } else {

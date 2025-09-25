@@ -1,51 +1,37 @@
-import java.util.Scanner;
-
-public class Max_min {
-
-    public static int[] maxMin(int arr[], int indx, int j) {
-        if (indx == j) {
-            // Only one element
-            return new int[] {arr[indx], arr[indx]}; // {max, min}
+public class Max_min{
+    public static void  max_min(int arr[],int initindex,int max,int min){
+        if(arr.length==initindex){
+            System.out.println("max"+max);
+            System.out.println("min"+min);
+            return;
         }
-
-        if ((j - indx) == 1) {
-            // Two elements
-            if (arr[indx] > arr[j]) {
-                return new int[] {arr[indx], arr[j]}; // max, min
-            } else {
-                return new int[] {arr[j], arr[indx]};
-            }
+       if(arr.length==2){
+        if(arr[0]>arr[1]){
+            max=arr[0];
+            min=arr[1];
+        }else{
+            max=arr[1];
+            min=arr[0];
         }
-
-        int mid = (indx + j) / 2;
-
-        int[] left = maxMin(arr, indx, mid);    // {max, min}
-        int[] right = maxMin(arr, mid + 1, j); // {max, min}
-
-        int overallMax = (left[0] > right[0]) ? left[0] : right[0];
-        int overallMin = (left[1] < right[1]) ? left[1] : right[1];
-
-        return new int[] {overallMax, overallMin};
+        System.out.println("max"+max);
+        System.out.println("min"+min);
+        return;
+       }
+       if(arr.length>2){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+           if(arr[initindex]>max){
+               max=arr[initindex];
+           }
+           if(arr[initindex]<min){
+               min=arr[initindex];
+           }
+           max_min(arr,initindex+1,max,min);
+       }
     }
+    public static void main(String[] args){
+        int arr[]={1,2,3,4,5,6,7,8,9};
+        max_min(arr,0,arr[0],arr[0]);
+        return;
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter the size of array:");
-        int n = sc.nextInt();
-
-        int arr[] = new int[n];
-
-        System.out.println("Enter the elements of array:");
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-
-        int ans[] = maxMin(arr, 0, n - 1);
-
-        System.out.println("Max is " + ans[0]);
-        System.out.println("Min is " + ans[1]);
-
-        sc.close();
     }
 }

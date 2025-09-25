@@ -17,13 +17,26 @@ public class Permutation {
             }
         }
     }
+    public static void printpermute(String str,String permute,int i){
+      
+        if(str.length()==0){
+            System.out.println(permute);
+            return;
+        }
+        for(int j=i;j<str.length();j++){
+            char current= str.charAt(j);
+            String newpermute=str.substring(0,j)+str.substring(j+1);
+            printpermute(newpermute, permute+current, j);
+        }
+    }
     public static void main(String[] args) {
         System.out.println("Enter the string:");
         Scanner s=new Scanner(System.in);
         String str=s.nextLine();        
         String a[]=str.split("");
         int n=a.length;
-        permute(a,0,n); 
+        permute(a,0,n);
+        printpermute(str, " ", 0);
     }
     
 }
