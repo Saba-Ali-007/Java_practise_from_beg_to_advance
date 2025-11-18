@@ -5,7 +5,7 @@ if(indx==str.length()){
 System.out.println(newString);
 return;
 }
-char current=str.charAt(indx);
+char current=str.charAt(indx);,
 sub(str,indx+1,newString+current);
 sub(str,indx+1,newString);
 }
